@@ -6,6 +6,21 @@ import User from "../User";
 import ShowDoc from "../ShowDoc";
 class App extends Component {
   render() {
+    constructor(props) {
+      super(props);
+      this.state = {
+        userLoggedIn: false
+      }
+      this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
+    }
+
+    updateUserLoggedIn(user) {
+      this.setState({
+        userLoggedIn: true,
+        userId: user.id
+      });
+    }
+
     return (
       <Router>
         <div className='App'>
