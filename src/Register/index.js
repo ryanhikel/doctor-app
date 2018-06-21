@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 
-class Landing extends Component {
+class Register extends Component {
     constructor(props) {
         super(props)
 
@@ -62,4 +62,4 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+export default Register;
