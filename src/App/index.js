@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Landing from "../Landing";
 import User from "../User";
 import ShowDoc from "../ShowDoc";
+import LandingLogin from "../LandingLogin"
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends Component {
               <Link to='/user/:id'>Profile</Link>
             </nav>
               <Route to='/comments.json' />
-              <Route path='/' exact component={Landing} />
+              <Route path='/' exact component={LandingLogin} />
               <Route path='/doctor/:id' exact component={ShowDoc} />
               <Route path='/user/:id' exact component={User} />
           </div>
