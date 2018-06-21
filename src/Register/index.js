@@ -8,7 +8,7 @@ class Landing extends Component {
         this.state = {
             username: '',
             password_digest: '',
-            image: ''
+            profile_pic: ''
         }
         this.onFormChange = this.onFormChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -29,6 +29,7 @@ class Landing extends Component {
         const newUser = {
             username: this.state.username,
             password_digest: this.state.password_digest,
+            profile_pic: this.state.profile_pic
         }
         console.log(newUser);
         
@@ -54,7 +55,7 @@ class Landing extends Component {
                 <h2>Register</h2>
                 <p>Username <input type="text" name="username" value={this.state.username} /></p>
                 <p>Password <input type="password" name="password_digest" value={this.state.password} /></p>
-                <p>Image <input type="text" name="image" value={this.state.image} placeholder="Enter Image Url" /></p>
+                <p>Image <input type="text" name="profile_pic" value={this.state.profile_pic} placeholder="Enter Image Url" /></p>
                 <p><input type="submit" value="submit" /></p>
             </form>
         )
