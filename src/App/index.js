@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoggedIn: false
+      userLoggedIn: true
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
