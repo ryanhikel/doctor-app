@@ -7,7 +7,7 @@ class Landing extends Component {
 
         this.state = {
             username: '',
-            password: '',
+            password_digest: '',
             image: ''
         }
         this.onFormChange = this.onFormChange.bind(this);
@@ -28,8 +28,10 @@ class Landing extends Component {
         evt.preventDefault();
         const newUser = {
             username: this.state.username,
-            password: this.state.password,
+            password_digest: this.state.password_digest,
         }
+        console.log(newUser);
+        
         fetch('/register', {
             method: 'POST',
             body: JSON.stringify(newUser),
@@ -48,12 +50,13 @@ class Landing extends Component {
 
     render() {
         return (
-                <form className="Register" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-                    <h2>Register</h2>
-                    <p>Username <input type="text" name="username" value={this.state.username} /></p>
-                    <p>Password <input type="password" name="password" value={this.state.password} /></p>
-                    <p>Image <input type="text" name="image" value={this.state.image} placeholder="Enter Image Url" /></p>
-                </form>
+            <form className="Register" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+                <h2>Register</h2>
+                <p>Username <input type="text" name="username" value={this.state.username} /></p>
+                <p>Password <input type="password" name="password_digest" value={this.state.password} /></p>
+                <p>Image <input type="text" name="image" value={this.state.image} placeholder="Enter Image Url" /></p>
+                <p><input type="submit" value="submit" /></p>
+            </form>
         )
     }
 }
