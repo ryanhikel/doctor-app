@@ -1,13 +1,41 @@
 import React, { Component } from "react";
 import "./style.css";
+
+
 class User extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      userId: '',
+      name: '',
+      image: ''
+    }
+    console.log(this.state);
+    
+  }
+
+  componentDidMount() {
+    let id = this.props.match.params.id;
+    fetch(`/user/${id}.json`)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json.profile_pic)
+        this.setstate({
+          userId: json.user_id,
+          name: json.username,
+          image: json.profile_pic
+        })
+      });
+  }
+
   render() {
     return (
-      <div>
-        <h1>Im a User</h1>
-        <p>Batya David</p>
-        <p>Mother of two kids</p>
-        <p>I live in Brookly, NY</p>
+      <div className="user">
+        <div className="image-wrapper">
+        I got here
+          <img src={`${this.state.image}`} alt="Nothing" />
+        </div>
       </div>
     )
   }

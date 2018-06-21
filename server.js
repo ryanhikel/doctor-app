@@ -16,6 +16,15 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.get('/user/:id.json', (request, response) => {
+  const id = request.params.user_id
+  Users.find(id)
+    .then(userData => {
+      console.log(userData);
+      response.json(userData)
+    });
+});
+
 app.post('/register', (request, response) => {
   const newUser = request.body;
   console.log(request.body);
@@ -28,6 +37,9 @@ app.post('/register', (request, response) => {
       });
   });
 });
+
+
+
 
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567
