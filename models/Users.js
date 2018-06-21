@@ -14,11 +14,13 @@ Users.create = (newUser) => {
   return db.one(`INSERT INTO users 
   ( 
     username, 
-    password_digest
+    password_digest,
+    profile_pic
   ) 
   VALUES (
     $<username>, 
-    $<password_digest>
+    $<password_digest>,
+    $<profile_pic>
   ) 
     RETURNING *`, newUser)
 }

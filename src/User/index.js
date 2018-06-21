@@ -5,6 +5,9 @@ class User extends Component {
     return (
       <div>
         <h1>Im a User</h1>
+        <p>Batya David</p>
+        <p>Mother of two kids</p>
+        <p>I live in Brookly, NY</p>
       </div>
     )
   }
