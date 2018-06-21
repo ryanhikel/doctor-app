@@ -17,7 +17,8 @@ app.use(session({
 }));
 
 app.get('/user/:id.json', (request, response) => {
-  const id = request.params.user_id
+  const id = request.params.id
+  console.log(id);
   Users.find(id)
     .then(userData => {
       console.log(userData);

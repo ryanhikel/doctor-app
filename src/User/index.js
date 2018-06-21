@@ -12,29 +12,27 @@ class User extends Component {
       image: ''
     }
     console.log(this.state);
-    
+
   }
 
   componentDidMount() {
-    let id = this.props.match.params.id;
+    let id = window.location.href.split("/").pop();
     fetch(`/user/${id}.json`)
       .then(response => response.json())
       .then(json => {
-        console.log(json.profile_pic)
-        this.setstate({
-          userId: json.user_id,
+        this.setState({
+          userId: id,
           name: json.username,
           image: json.profile_pic
         })
-      });
+      })
   }
 
   render() {
     return (
       <div className="user">
         <div className="image-wrapper">
-        I got here
-          <img src={`${this.state.image}`} alt="Nothing" />
+          <img src={this.state.image} alt="Nothing" />
         </div>
       </div>
     )
