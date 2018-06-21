@@ -9,6 +9,7 @@ const Favorites = require('./models/Favorites');
 // Create a new Express application (web server)
 const app = express();
 
+app.use(bodyParser.json());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -17,6 +18,8 @@ app.use(session({
 
 app.post('/register', (request, response) => {
   const newUser = request.body;
+  console.log(request.body);
+  
   bcrypt.hash(newUser.password_digest, saltRounds, function (err, hash) {
     newUser.password_digest = hash;
     Users.create(newUser)
@@ -26,7 +29,6 @@ app.post('/register', (request, response) => {
   });
 });
 
-app.use(bodyParser.json());
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567
 const PORT = process.env.PORT || 4567;
