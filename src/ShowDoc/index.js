@@ -6,7 +6,7 @@ class Show extends Component {
     this.state = {
       uid: '',
       first_name: 'Ter',
-      last_name: 'Doc',
+      last_name: null,
       title: 'MD',
       insurances: [],
       educations: [],
@@ -16,8 +16,9 @@ class Show extends Component {
     }
   }
   componentDidMount() {
+    let doc_uid = '0527542106c0b0767a11f48d262b64e8';
     let id = this.props.match.params.id;
-    fetch(`https://api.betterdoctor.com/2016-03-01/doctors/0527542106c0b0767a11f48d262b64e8?user_key=765d4d94d563c485b63d477fa8644e1d`)
+    fetch(`https://api.betterdoctor.com/2016-03-01/doctors/${doc_uid}?user_key=765d4d94d563c485b63d477fa8644e1d`)
       .then(response => response.json())
       .then(doctor => {
         const licence = doctor.data.licenses.filter(x => {
@@ -40,24 +41,26 @@ class Show extends Component {
       });
   }
   render() {
-    return (
-      <div>
-        <h1>{this.state.last_name + ', ' + this.state.first_name + ' ' + this.state.title}</h1>
-        <p>{this.state.bio}</p>
-        <p>
-          I take these insurances
+    if (this.state.last_name === null) {
+      return <div></div>
+    } else {
+      return (
+        <div>
+          <h1>{this.state.last_name + ', ' + this.state.first_name + ' ' + this.state.title}</h1>
+          <p>{this.state.bio}</p>
+          <p>
+            I take these insurances
           </p>
-        <ul>
-          {this.state.insurances.map((insurance, index) => {
-            return <li key={index}>{insurance.insurance_plan.name}</li>
+          <ul>
+            {this.state.insurances.map((insurance, index) => {
+              return <li key={index}>{insurance.insurance_plan.name}</li>
+            })}
+          </ul>
+          <p>Licenses:</p>{this.state.licenses.map((licence, index) => {
+            return <h4 key={index}>{licence.state} {licence.number}</h4>
           })}
-        </ul>
-        <p>Licenses:</p>{this.state.licenses.map((licence, index) => {
-          return <h4 key={index}>{licence.state} {licence.number}</h4>
-        })}
-      </div>
-    )
-  }
+        </div>
+      )}}
 }
 
 export default Show;

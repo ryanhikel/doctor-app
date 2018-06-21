@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Landing from "../Landing";
 import User from "../User";
 import ShowDoc from "../ShowDoc";
-import LandingLogin from "../LandingLogin"
+import LandingLogin from "../LandingLogin";
+import FilterDoctors from "../FilterDoctors"
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoggedIn: true
+      userLoggedIn: false
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
@@ -24,10 +25,10 @@ class App extends Component {
 
   render() {
     if (!this.state.userLoggedIn) {
-      return(
-      <div className="App">
-          <Landing onUserLoggedIn={this.updateUserLoggedIn}/>
-      </div>
+      return (
+        <div className="App">
+          <Landing onUserLoggedIn={this.updateUserLoggedIn} />
+        </div>
       )
     } else {
       return (
@@ -35,16 +36,19 @@ class App extends Component {
           <div className='App'>
             <nav className="navigation">
               <Link to='/'>Landing</Link>
-              <Link to='/doctor/:id'>Find</Link>
-              <Link to='/user/:id'>Profile</Link>
+              <Link to='/find'>Search For A Doctor</Link>
+              <Link to='/doctor/:id'>Doctor Profile</Link>
+              <Link to='/user/:id'>User Profile</Link>
             </nav>
-              <Route to='/comments.json' />
-              <Route path='/' exact component={LandingLogin} />
-              <Route path='/doctor/:id' exact component={ShowDoc} />
-              <Route path='/user/:id' exact component={User} />
+            <Route to='/comments.json' />
+            <Route path='/' exact component={LandingLogin} />
+            <Route path='/find' exact component={FilterDoctors} />
+            <Route path='/doctor/:id' exact component={ShowDoc} />
+            <Route path='/user/:id' exact component={User} />
           </div>
         </Router>
-      )}
+      )
+    }
   }
 }
 
