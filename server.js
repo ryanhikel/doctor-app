@@ -1,9 +1,32 @@
 const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const path = require('path');
-const fetch = require('node-fetch');
+const Users = require('./models/Users');
+const Favorites = require('./models/Favorites');
 // Create a new Express application (web server)
 const app = express();
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.post('/register', (request, response) => {
+  const newUser = request.body;
+  bcrypt.hash(newUser.password_digest, saltRounds, function (err, hash) {
+    newUser.password_digest = hash;
+    Users.create(newUser)
+      .then(user => {
+        response.json(user)
+      });
+  });
+});
+
+app.use(bodyParser.json());
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567
 const PORT = process.env.PORT || 4567;
