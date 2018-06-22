@@ -35,4 +35,9 @@ Users.update = (userInfo) => {
 Users.delete = (id) => {
   return db.result(`DELETE FROM buildings where id = $1`, [id])
 }
+
+Users.findByUsername = username => {
+  return db.one("SELECT * FROM users WHERE username = $1", [username]);
+}
+
 module.exports = Users;
