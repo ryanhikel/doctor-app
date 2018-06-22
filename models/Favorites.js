@@ -18,8 +18,8 @@ Favorites.create = (newFavorite) => {
     doctor_pic
   ) 
   VALUES (
-    $<>, 
-    $<>
+    $<favorite_id>, 
+    $<doctor_pic>
   ) 
     RETURNING *`, newFavorite)
 }
