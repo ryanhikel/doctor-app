@@ -53,11 +53,11 @@ class Login extends Component {
 
     render() {
         return (
-            <form className="login" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-                <h2>LOGIN</h2>
-                <p>Username <input type="text" name="username" value={this.state.username} /></p>
-                <p>Password <input type="password" name="password" value={this.state.password} /></p>
-                <p><input type="submit" value="submit" /></p>
+            <form className="Login control" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+                <h2 className="subheading">LOGIN</h2>
+                <p className="subheading">Username <input className='input' type="text" name="username" value={this.state.username} /></p>
+                <p className="subheading">Password <input className='input' type="password" name="password" value={this.state.password} /></p>
+                <p><input className='button' type="submit" value="submit" /></p>
             </form>
         )
     }

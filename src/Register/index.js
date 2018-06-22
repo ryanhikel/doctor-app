@@ -53,7 +53,7 @@ class Register extends Component {
 
     render() {
         return (
-            <form className="Register" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+            <form className="Register control" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
                 <h2>Register</h2>
                 <p>Username <input type="text" name="username" value={this.state.username} /></p>
                 <p>Password <input type="password" name="password_digest" value={this.state.password} /></p>
