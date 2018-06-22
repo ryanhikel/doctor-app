@@ -15,9 +15,8 @@ class ListDoctors extends Component {
       .then(response => response.json())
       .then(doctors => {
         this.setState({
-          doctors: doctors.data
+          doctors: doctors.data,
         });
-
       });
   }
   render() {
@@ -27,7 +26,7 @@ class ListDoctors extends Component {
           return (
             <ShowDoc
               key={index}
-              doctor= {doctor}
+              doctor={doctor}
             />
           )
         })}
