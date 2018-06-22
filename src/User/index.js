@@ -9,7 +9,9 @@ class User extends Component {
     this.state = {
       userId: '',
       name: '',
-      image: ''
+      image: '',
+      bio: '',
+      amount_children: 0
     }
     console.log(this.state);
 
@@ -23,7 +25,9 @@ class User extends Component {
         this.setState({
           userId: id,
           name: json.username,
-          image: json.profile_pic
+          image: json.profile_pic,
+          bio: json.bio,
+          amount_children: json.amount_children
         })
       })
   }
@@ -33,6 +37,10 @@ class User extends Component {
       <div className="user">
         <div className="image-wrapper">
           <img src={this.state.image} alt="Nothing" />
+        </div>
+        <div className="user-info">
+        <p>{this.state.bio}</p>
+        <p>{this.state.amount_children}</p>
         </div>
       </div>
     )
