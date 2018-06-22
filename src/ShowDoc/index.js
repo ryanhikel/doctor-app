@@ -13,8 +13,8 @@ class Show extends Component {
       bio: '',
       specialties: [],
       licenses: [],
-      addresses: [],
-      hours:''
+      address: '',
+      hours: ''
     }
   }
   componentDidMount() {
@@ -24,38 +24,40 @@ class Show extends Component {
     const city = this.props.doctor.practices[0].visit_address.city;
     const state = this.props.doctor.practices[0].visit_address.state;
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
-    let addresses = [];
-    console.log(addresses);
-    
-    addresses = addresses.push(address);
-    console.log(addresses);
-    
+
     this.setState({
       licenses: license,
+      address: address
     });
 
-    
+
   }
   render() {
-      return (
-        <div className="control">
-          <h1 className="title">{this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}</h1>
-          <p>{this.props.doctor.profile.bio}</p>
-          <p>I take these insurances:</p>
-          <div className="breadcrumb is-small">
+    return (
+      <div className="control">
+        <h1 className="title">{this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}</h1>
+        <p>{this.props.doctor.profile.bio}</p>
+        <p>I take these insurances:</p>
+        <div className="breadcrumb is-small">
           <ul>
             {this.props.doctor.insurances.map((insurance, index) => {
               return <li key={index}>{insurance.insurance_plan.name}</li>
             })}
           </ul>
-          </div>
-          <p>Licenses:</p>{
+        </div>
+        <div>
+          <h2>
+            Licenses:
+          </h2>
+          {
             this.state.licenses.map((license, index) => {
               return <h4 key={index}>{license.state} {license.number}</h4>
             })}
         </div>
-      )
-    }
+        <p>Address: {this.state.address}</p>
+      </div>
+    )
+  }
 }
 
 export default Show;
