@@ -9,7 +9,9 @@ CREATE TABLE users
   user_id serial primary key,
   username text,
   password_digest text,
-  profile_pic text
+  profile_pic text,
+  bio text,
+  amount_children int
 );
 CREATE TABLE favorites
 (

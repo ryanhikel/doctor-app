@@ -15,12 +15,16 @@ Users.create = (newUser) => {
   ( 
     username, 
     password_digest,
-    profile_pic
+    profile_pic,
+    bio,
+    amount_children
   ) 
   VALUES (
     $<username>, 
     $<password_digest>,
-    $<profile_pic>
+    $<profile_pic>,
+    $<bio>,
+    $<amount_children>
   ) 
     RETURNING *`, newUser)
 }
@@ -35,4 +39,9 @@ Users.update = (userInfo) => {
 Users.delete = (id) => {
   return db.result(`DELETE FROM buildings where id = $1`, [id])
 }
+
+Users.findByUsername = username => {
+  return db.one("SELECT * FROM users WHERE username = $1", [username]);
+}
+
 module.exports = Users;
