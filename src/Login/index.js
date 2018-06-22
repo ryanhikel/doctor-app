@@ -42,6 +42,7 @@ class Login extends Component {
 
     onFormChange(evt) {
         const element = evt.target;
+        const name = element.name;
         const value = element.value;
         const newState = {};
         newState[name] = value;
