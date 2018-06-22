@@ -17,7 +17,6 @@ class Show extends Component {
   }
   componentDidMount() {
     const license = this.props.doctor.licenses.filter(x => x.number !== undefined && x.state !== undefined);
-    console.log(license); 
     this.setState({
       licenses: license
 

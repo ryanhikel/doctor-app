@@ -15,12 +15,16 @@ Users.create = (newUser) => {
   ( 
     username, 
     password_digest,
-    profile_pic
+    profile_pic,
+    bio,
+    amount_children
   ) 
   VALUES (
     $<username>, 
     $<password_digest>,
-    $<profile_pic>
+    $<profile_pic>,
+    $<bio>,
+    $<amount_children>
   ) 
     RETURNING *`, newUser)
 }
