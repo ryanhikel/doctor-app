@@ -8,14 +8,14 @@ class Landing extends Component {
   render() {
     return (
       <div className='Landing'>
-        <h1>{'(>^_^)> <(^_^)> <(^_^<)'}</h1>
+        <h1 className="title">{'(>^_^)> <(^_^)> <(^_^<)'}</h1>
 
-        <p>Healthy Kids</p>
-        
+        <p className="title">Healthy Kids</p>
+        <div className="">
         <Login  onUserLoggedIn={this.props.onUserLoggedIn} />
 
         <Register onUserLoggedIn={this.props.onUserLoggedIn} />
-
+</div>
       </div>
     )
   }

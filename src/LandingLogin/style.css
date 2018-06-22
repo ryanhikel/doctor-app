@@ -1,6 +1,3 @@
-.landingLogin{
-  background-image: url("../images/brooke-lark-230140-unsplash.jpg");
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
+body{
+  text-align: right;
 }
