@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
 class Show extends Component {
   constructor(props) {
@@ -14,10 +15,12 @@ class Show extends Component {
       specialties: [],
       licenses: [],
       address: '',
-      hours: ''
+      hours: '',
+      doctor_uid: ''
     }
   }
   componentDidMount() {
+    let id = window.location.href.split("/").pop();
     const license = this.props.doctor.licenses.filter(x => x.number !== undefined && x.state !== undefined);
     const street = this.props.doctor.practices[0].visit_address.street;
     const zip = this.props.doctor.practices[0].visit_address.zip;
@@ -27,15 +30,18 @@ class Show extends Component {
 
     this.setState({
       licenses: license,
-      address: address
+      address: address,
+      doctor_uid: this.props.doctor.uid
     });
-
-
   }
   render() {
     return (
       <div className="control">
-        <h1 className="title">{this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}</h1>
+        <h1 className="title">
+          <Link to={`/doctor/${this.state.doctor_uid}`}>
+            {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
+          </Link>
+        </h1>
         <p>{this.props.doctor.profile.bio}</p>
         <p>I take these insurances:</p>
         <div className="breadcrumb is-small">
@@ -55,6 +61,7 @@ class Show extends Component {
             })}
         </div>
         <p>Address: {this.state.address}</p>
+        <p>{this.state.doctor_uid}</p>
       </div>
     )
   }
