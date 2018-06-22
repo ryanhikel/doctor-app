@@ -10,7 +10,7 @@ class Landing extends Component {
       <div className='Landing'>
         <h1>{'(>^_^)> <(^_^)> <(^_^<)'}</h1>
 
-        <p>PLACEHOLDER TEXT</p>
+        <p>Healthy Kids</p>
         
         <Login  onUserLoggedIn={this.props.onUserLoggedIn} />
 

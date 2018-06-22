@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Landing from "../Landing";
 import User from "../User";
 import ShowDoc from "../ShowDoc";
-import LandingLogin from "../LandingLogin"
+import LandingLogin from "../LandingLogin";
+import ListDoctors from "../ListDoctors"
 
 class App extends Component {
   constructor(props) {
@@ -25,10 +26,10 @@ class App extends Component {
 
   render() {
     if (!this.state.userLoggedIn) {
-      return(
-      <div className="App">
-          <Landing onUserLoggedIn={this.updateUserLoggedIn}/>
-      </div>
+      return (
+        <div className="App">
+          <Landing onUserLoggedIn={this.updateUserLoggedIn} />
+        </div>
       )
     } else {
       return (
@@ -45,7 +46,8 @@ class App extends Component {
               <Route path={`/user/${this.state.userId}`} exact component={User} />
           </div>
         </Router>
-      )}
+      )
+    }
   }
 }
 
