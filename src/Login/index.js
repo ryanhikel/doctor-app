@@ -31,8 +31,6 @@ class Login extends Component {
         })
             .then(response => response.json())
             .then(jsonResp => {
-                console.log(jsonResp);
-                
                 if (jsonResp.loggedIn === true) {
                     this.props.onUserLoggedIn(jsonResp.user)
                 } else {
