@@ -5,13 +5,13 @@ import Landing from "../Landing";
 import User from "../User";
 import ShowDoc from "../ShowDoc";
 import LandingLogin from "../LandingLogin";
-import FilterDoctors from "../FilterDoctors"
+import ListDoctors from "../ListDoctors"
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoggedIn: false
+      userLoggedIn: true
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
@@ -42,7 +42,7 @@ class App extends Component {
             </nav>
             <Route to='/comments.json' />
             <Route path='/' exact component={LandingLogin} />
-            <Route path='/find' exact component={FilterDoctors} />
+            <Route path='/find' exact component={ListDoctors} />
             <Route path='/doctor/:id' exact component={ShowDoc} />
             <Route path='/user/:id' exact component={User} />
           </div>
