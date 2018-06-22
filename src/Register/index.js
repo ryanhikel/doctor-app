@@ -31,7 +31,6 @@ class Register extends Component {
             password_digest: this.state.password_digest,
             profile_pic: this.state.profile_pic
         }
-        console.log(newUser);
         
         fetch('/register', {
             method: 'POST',
@@ -44,7 +43,6 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(jsonResp => {
-                console.log(jsonResp)
                 this.props.onUserLoggedIn(jsonResp)
             })
     }

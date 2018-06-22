@@ -7,7 +7,7 @@ Users.all = () => {
 }
 
 Users.find = id => {
-  return db.one('SELECT * FROM buildings WHERE user_id = $<id>', { id: id });
+  return db.one('SELECT * FROM users WHERE user_id = $<id>', { id: id });
 }
 
 Users.create = (newUser) => {

@@ -11,7 +11,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLoggedIn: true
+      userId: 0,
+      userLoggedIn: false
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
@@ -19,7 +20,7 @@ class App extends Component {
   updateUserLoggedIn(user) {
     this.setState({
       userLoggedIn: true,
-      userId: user.id
+      userId: user.user_id
     });
   }
 
@@ -36,15 +37,13 @@ class App extends Component {
           <div className='App'>
             <nav className="navigation">
               <Link to='/'>Landing</Link>
-              <Link to='/find'>Search For A Doctor</Link>
-              <Link to='/doctor/:id'>Doctor Profile</Link>
-              <Link to='/user/:id'>User Profile</Link>
+              <Link to='/doctor/:id'>Find</Link>
+              <Link to={`/user/${this.state.userId}`}>Profile</Link>
             </nav>
-            <Route to='/comments.json' />
-            <Route path='/' exact component={LandingLogin} />
-            <Route path='/find' exact component={ListDoctors} />
-            <Route path='/doctor/:id' exact component={ShowDoc} />
-            <Route path='/user/:id' exact component={User} />
+              <Route to='/comments.json' />
+              <Route path='/' exact component={LandingLogin} />
+              <Route path='/doctor/:id' exact component={ShowDoc} />
+              <Route path={`/user/${this.state.userId}`} exact component={User} />
           </div>
         </Router>
       )
