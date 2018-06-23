@@ -3,7 +3,6 @@ import "./style.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Landing from "../Landing";
 import User from "../User";
-import ShowDoc from "../ShowDoc";
 import LandingLogin from "../LandingLogin";
 import ListDoctors from "../ListDoctors";
 import SingleDoctor from "../SingleDoctor";
