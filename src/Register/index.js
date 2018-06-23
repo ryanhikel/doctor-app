@@ -54,13 +54,13 @@ class Register extends Component {
     render() {
         return (
             <form className="Register control" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-                <h2>Register</h2>
-                <p>Username <input type="text" name="username" value={this.state.username} /></p>
-                <p>Password <input type="password" name="password_digest" value={this.state.password} /></p>
-                <p>Image <input type="text" name="profile_pic" value={this.state.profile_pic} placeholder="Enter Image Url" /></p>
-                <p>Bio <textarea name="bio" value={this.state.bio}>Enter Bio</textarea></p>
-                <p>Number of Children <input type="number" name="amount_children" value={this.state.amount_children} placeholder="Amount of Children" /></p>
-                <p><input type="submit" value="submit" /></p>
+                <h2 className="subheading">REGISTER </h2>
+                <p className="subheading">Username <input className='input' type="text" name="username" value={this.state.username} /></p>
+                <p className="subheading">Password <input className='input' type="password" name="password_digest" value={this.state.password} /></p>
+                <p className="subheading">Image <input className='input' type="text" name="profile_pic" value={this.state.profile_pic} placeholder="Enter Image Url" /></p>
+                <p className="subheading">Bio <textarea className='input' name="bio" value={this.state.bio} placeholder="Enter Bio"></textarea></p>
+                <p className="subheading">Number of Children <input className='input' type="number" name="amount_children" value={this.state.amount_children} placeholder="Amount of Children" /></p>
+                <p><input className='button' type="submit" value="submit" /></p>
             </form>
         )
     }

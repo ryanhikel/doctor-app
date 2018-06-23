@@ -11,11 +11,11 @@ class Landing extends Component {
         <h1 className="title">{'(>^_^)> <(^_^)> <(^_^<)'}</h1>
 
         <p className="title">Healthy Kids</p>
-        <div className="">
-        <Login  onUserLoggedIn={this.props.onUserLoggedIn} />
+        <div className="forms">
+          <Login onUserLoggedIn={this.props.onUserLoggedIn} />
 
-        <Register onUserLoggedIn={this.props.onUserLoggedIn} />
-</div>
+          <Register onUserLoggedIn={this.props.onUserLoggedIn} />
+        </div>
       </div>
     )
   }
