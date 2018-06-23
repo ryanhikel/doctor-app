@@ -5,14 +5,16 @@ import Landing from "../Landing";
 import User from "../User";
 import ShowDoc from "../ShowDoc";
 import LandingLogin from "../LandingLogin";
-import ListDoctors from "../ListDoctors"
+import ListDoctors from "../ListDoctors";
+import SingleDoctor from "../SingleDoctor";
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: 0,
-      userLoggedIn: false
+      userLoggedIn: true
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
@@ -42,7 +44,7 @@ class App extends Component {
             </nav>
             <Route path='/' exact component={LandingLogin} />
             <Route path='/doctors' exact component={ListDoctors} />
-            <Route path={`/doctor/${this.state.doctor_uid}`} exact component={ShowDoc} />
+            <Route path={`/doctor/:id`} exact component={SingleDoctor} />
             <Route path={`/user/${this.state.userId}`} exact component={User} />
           </div>
         </Router>
