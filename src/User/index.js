@@ -39,8 +39,8 @@ class User extends Component {
           <img src={this.state.image} alt="Nothing" />
         </div>
         <div className="user-info">
-        <p>Bio: {this.state.bio}</p>
-        <p>Number of Chilren: {this.state.amount_children}</p>
+          <div class='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
+          <div class='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
         </div>
       </div>
     )

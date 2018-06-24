@@ -8,8 +8,13 @@
   max-height: 500px;
 }
 
-.user p {
-  font-size: 1rem;
+.user-info{
+  display: inline-block;
+  text-align: left;
   padding: 1rem;
+}
 
+.user-info .subheading {
+  font-weight: bold;
+  padding-right: 10px;
 }
