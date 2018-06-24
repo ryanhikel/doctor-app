@@ -54,7 +54,7 @@ class Register extends Component {
     render() {
         return (
             <form className="Register control" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-                <h2 className="subheading">REGISTER </h2>
+                <h2 className="heading">REGISTER </h2>
                 <p className="subheading">Username <input className='input' type="text" name="username" value={this.state.username} /></p>
                 <p className="subheading">Password <input className='input' type="password" name="password_digest" value={this.state.password} /></p>
                 <p className="subheading">Image <input className='input' type="text" name="profile_pic" value={this.state.profile_pic} placeholder="Enter Image Url" /></p>

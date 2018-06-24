@@ -37,9 +37,9 @@ class App extends Component {
         <Router>
           <div className='App'>
             <nav className="navigation">
-              <Link to='/'>Landing</Link>
+              <Link to='/'>Home</Link>
               <Link to="/doctors">List of All Doctors</Link>
-              <Link to={`/user/${this.state.userId}`}>Profile</Link>
+              <Link to={`/user/${this.state.userId}`}>Me</Link>
             </nav>
             <Route path='/' exact component={LandingLogin} />
             <Route path='/doctors' exact component={ListDoctors} />
