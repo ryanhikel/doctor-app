@@ -1,3 +1,15 @@
 .user {
   text-align: center;
+  padding: 1rem;
+}
+
+.user img{
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.user p {
+  font-size: 1rem;
+  padding: 1rem;
+
 }

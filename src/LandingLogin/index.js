@@ -5,7 +5,7 @@ class LandingLogin extends Component {
 
     render() {
         return (
-            <div className='landingLogin'>
+            <div className='LandingLogin'>
                 <h1>Healthy Kids</h1>
                 <p>PLACEHOLDER TEXT</p>
             </div>
