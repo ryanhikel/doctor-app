@@ -14,17 +14,6 @@
   padding: 1rem;
 }
 
-.user p {
-  font-size: 1rem;
-  padding-top: 1rem;
-  font-weight: bold;
-}
-
-.amount-children {
-  display: flex;
-  flex-direction: column;
-}
-
 .user-info .subheading {
   font-weight: bold;
   padding-right: 10px;
