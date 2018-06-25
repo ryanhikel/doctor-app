@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import "./style.css";
 
 class Login extends Component {
@@ -32,7 +33,8 @@ class Login extends Component {
             .then(response => response.json())
             .then(jsonResp => {
                 if (jsonResp.loggedIn === true) {
-                    this.props.onUserLoggedIn(jsonResp.user)
+                    this.props.onUserLoggedIn(jsonResp.user),
+                    <Redirect to={`/user/${jsonResp.user.user_id}`} />
                 } else {
                     console.log("PW DIDN'T MATCH")
                 }

@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: 0,
-      userLoggedIn: true
+      userLoggedIn: false
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
@@ -29,7 +29,9 @@ class App extends Component {
     if (!this.state.userLoggedIn) {
       return (
         <div className="App">
-          <Landing onUserLoggedIn={this.updateUserLoggedIn} />
+          <Landing 
+          onUserLoggedIn={this.updateUserLoggedIn}
+          userId={this.state.userID} />
         </div>
       )
     } else {
@@ -40,7 +42,7 @@ class App extends Component {
               <Link to='/'>Home</Link>
               <Link to={{ 
                 pathname: "/doctors", 
-                params: {
+                state: {
                   userId: this.state.userId
                 }}}>List of All Doctors</Link>
               <Link to={`/user/${this.state.userId}`}>Me</Link>

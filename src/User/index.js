@@ -13,7 +13,6 @@ class User extends Component {
       bio: '',
       amount_children: 0
     }
-    console.log(this.state);
 
   }
 

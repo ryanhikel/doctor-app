@@ -9,6 +9,24 @@ class Show extends Component {
       educations: [],
       hours: ''
     }
+    this.addToFavorite = this.addToFavorite.bind(this)
+  }
+  addToFavorite(evt) {
+    evt.preventDefault();
+    const newFavorite = {
+      doctor_uid: this.props.doctor.uid,
+      user_id: this.props.userId
+    }
+    fetch('/favorite', {
+      method: 'POST',
+      body: JSON.stringify(newFavorite),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      /* Necessary to pass the session cookie along with the request */
+      credentials: "same-origin"
+    })
+      .then(response => response.json())
   }
   render() {
     const license = this.props.doctor.licenses.filter(x => x.number !== undefined && x.state !== undefined);
@@ -22,7 +40,12 @@ class Show extends Component {
     return (
       <div className="control Show">
           <div>
-            <Link to={`/doctor/${this.props.doctor.uid}`}>
+          <Link to={{
+            pathname: `/doctor/${this.props.doctor.uid}`,
+            state: {
+              userId: this.props.userId
+            }
+          }}>
               <h1 className="title">
                 {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
               </h1>
@@ -48,6 +71,7 @@ class Show extends Component {
         </div>
         <p>Address: {address}</p>
         <p>{this.props.doctor.uid}</p>
+        <button className='button' onClick={this.addToFavorite}>favorite</button>
       </div>
     )
   }
