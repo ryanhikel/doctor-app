@@ -23,15 +23,17 @@ class Comment extends Component {
   }
 
   render() {
-
-    return (
-      <div className='Comment'>
-        {this.state.comments.map(x => {
-          <div>x</div>
-        })}
-      </div>
-    )
+    if (this.state.comments === '') {
+      return <div className='Comment'></div>
+    } else {
+      return (
+        <div className='Comments'>
+          {this.state.comments.map(comment => {
+            return <div className='comment'>{comment}</div>
+          })}
+        </div>
+      )
+    }
   }
 }
-
 export default Comment;

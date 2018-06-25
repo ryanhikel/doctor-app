@@ -29,4 +29,10 @@ Comments.create = (newComment) => {
     RETURNING *`, newComment)
 }
 
+Comments.update = (updateComment) => {
+  return db.none(`UPDATE comments 
+  SET  message_desc = $<message_desc>,
+  WHERE user_id = $<id>`, updateComment)
+}
+
 module.exports = Comments;
