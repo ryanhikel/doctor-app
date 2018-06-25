@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: 0,
-      userLoggedIn: false
+      userLoggedIn: true
     }
     this.updateUserLoggedIn = this.updateUserLoggedIn.bind(this);
   }
