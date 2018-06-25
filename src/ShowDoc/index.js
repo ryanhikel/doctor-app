@@ -17,6 +17,10 @@ class Show extends Component {
       doctor_uid: this.props.doctor.uid,
       user_id: this.props.userId
     }
+    console.log(newFavorite);
+    
+    console.log('clicked');
+    
     fetch('/favorite', {
       method: 'POST',
       body: JSON.stringify(newFavorite),
@@ -35,7 +39,6 @@ class Show extends Component {
     const city = this.props.doctor.practices[0].visit_address.city;
     const state = this.props.doctor.practices[0].visit_address.state;
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
-    console.log(this.props);
     
     return (
       <div className="control Show">

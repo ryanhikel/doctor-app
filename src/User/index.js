@@ -29,17 +29,31 @@ class User extends Component {
           amount_children: json.amount_children
         })
       })
+    fetch(`/favorites/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "same-origin"
+    }).then(response => response.json())
+      .then(favs =>
+        this.setState({
+          fav_docs: favs
+        })
+      )
   }
 
   render() {
+    console.log(this.state.fav_docs);
     return (
       <div className="user">
+        <h1>{this.state.userId}</h1>
         <div className="image-wrapper">
           <img src={this.state.image} alt="Nothing" />
         </div>
         <div className="user-info">
-          <div class='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
-          <div class='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+          <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
+          <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
         </div>
       </div>
     )

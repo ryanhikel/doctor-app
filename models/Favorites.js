@@ -8,7 +8,7 @@ Favorites.all = () => {
 }
 
 Favorites.find = id => {
-  return db.one('SELECT * FROM favorites WHERE doctor_uid = $<id>', { id: id });
+  return db.any('SELECT * FROM favorites WHERE user_id = $<id>', { id });
 }
 
 Favorites.create = (newFavorite) => {

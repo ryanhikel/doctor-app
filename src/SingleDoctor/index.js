@@ -63,7 +63,6 @@ class SingleDoctor extends Component {
               })}
           </div>
           <p>Address: {address}</p>
-          <p>{this.state.doctor.uid}</p>
           <h3>Contact me:</h3>
           <p>{formatPhoneNumber(phones[0].number)}</p>
           <CommentBox />

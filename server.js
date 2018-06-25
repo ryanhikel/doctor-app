@@ -16,8 +16,17 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.get('/favorites/:id', (request, response) => {
+  const id = Number(request.params.id);
+  Favorites.find(id)
+    .then(favorite => {
+      console.log(favorite);
+      response.json(favorite)
+    })
+})
+
 app.get('/user/:id.json', (request, response) => {
-  const id = request.params.id
+  const id = Number(request.params.id);
   Users.find(id)
     .then(userData => {
       console.log(userData);
@@ -70,6 +79,7 @@ app.post('/favorite', (request, response) => {
   Favorites.create(newFavorite)
   .then(favorite => response.json(favorite))
 })
+
 
 
 
