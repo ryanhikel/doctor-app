@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
 
 
@@ -44,19 +45,39 @@ class User extends Component {
   }
 
   render() {
-    console.log(this.state.fav_docs);
-    return (
-      <div className="user">
-        <h1>{this.state.userId}</h1>
-        <div className="image-wrapper">
-          <img src={this.state.image} alt="Nothing" />
+    const fav_docs = this.state.fav_docs;
+
+
+    if (this.state.fav_docs === undefined) {
+      return <div></div>
+    } else {
+      console.log(fav_docs);
+      return (
+        <div className="user">
+          <h1>{this.state.userId}</h1>
+          <div className="image-wrapper">
+            <img src={this.state.image} alt="Nothing" />
+          </div>
+          <div className="user-info">
+            <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
+            <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+          </div>
+          <div>
+            <h3>Favorite Doctors</h3>
+            <ul>
+              {fav_docs.map((doc, index) => {
+                console.log(doc.doctor_uid);
+                return (
+                  <Link to={`/doctor/${doc.doctor_uid}`}>
+                    <h1 className="title">doctor</h1>
+                  </Link>
+                )
+              })}
+            </ul>
+          </div>
         </div>
-        <div className="user-info">
-          <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
-          <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

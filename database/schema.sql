@@ -16,7 +16,9 @@ CREATE TABLE favorites
 (
   favorite_id serial primary key,
   doctor_uid text,
-  user_id INTEGER REFERENCES users(user_id)
+  user_id INTEGER REFERENCES users(user_id),
+  doctor_first_name text,
+  doctor_last_name text  
 );
 CREATE TABLE comments
 (

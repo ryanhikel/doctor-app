@@ -75,7 +75,9 @@ app.post('/login', (request, response) => {
 });
 
 app.post('/favorite', (request, response) => {
-  const newFavorite = request.body
+  const newFavorite = request.body;
+  console.log(newFavorite);
+  console.log(request.body);
   Favorites.create(newFavorite)
   .then(favorite => response.json(favorite))
 })
