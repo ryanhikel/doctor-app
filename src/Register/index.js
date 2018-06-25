@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import "./style.css";
 
 class Register extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             username: '',
             password_digest: '',
@@ -14,7 +14,6 @@ class Register extends Component {
         }
         this.onFormChange = this.onFormChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-
     }
 
     onFormChange(evt) {
@@ -47,7 +46,8 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(jsonResp => {
-                this.props.onUserLoggedIn(jsonResp)
+                this.props.onUserLoggedIn(jsonResp),
+                <Redirect to={`/user/${jsonResp.user.user_id}`} />
             })
     }
 

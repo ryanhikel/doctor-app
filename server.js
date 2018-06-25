@@ -65,6 +65,13 @@ app.post('/login', (request, response) => {
 
 });
 
+app.post('/favorite', (request, response) => {
+  const newFavorite = request.body
+  Favorites.create(newFavorite)
+  .then(favorite => response.json(favorite))
+})
+
+
 
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567

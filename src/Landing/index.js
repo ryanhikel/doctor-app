@@ -12,9 +12,13 @@ class Landing extends Component {
 
         <p className="title">Healthy Kids</p>
         <div className="forms">
-          <Login onUserLoggedIn={this.props.onUserLoggedIn} />
+          <Login 
+          onUserLoggedIn={this.props.onUserLoggedIn}
+          userId={this.props.userID} />
 
-          <Register onUserLoggedIn={this.props.onUserLoggedIn} />
+          <Register 
+          onUserLoggedIn={this.props.onUserLoggedIn}
+          userId={this.props.userID} />
         </div>
       </div>
     )
