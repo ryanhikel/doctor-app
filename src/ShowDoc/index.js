@@ -19,13 +19,13 @@ class Show extends Component {
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
     return (
       <div className="control Show">
-          <div>
-            <Link to={`/doctor/${this.props.doctor.uid}`}>
-              <h1 className="title">
-                {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
-              </h1>
-            </Link>
-          </div>
+        <div>
+          <Link to={`/doctor/${this.props.doctor.uid}`}>
+            <h1 className="title">
+              {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
+            </h1>
+          </Link>
+        </div>
         <p>{this.props.doctor.profile.bio}</p>
         <p>I take these insurances:</p>
         <div className="breadcrumb is-small">
@@ -45,7 +45,7 @@ class Show extends Component {
             })}
         </div>
         <p>Address: {address}</p>
-        <p>{this.props.doctor.uid}</p>
+
       </div>
     )
   }

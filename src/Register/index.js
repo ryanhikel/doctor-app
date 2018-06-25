@@ -4,7 +4,6 @@ import "./style.css";
 class Register extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             username: '',
             password_digest: '',
@@ -14,7 +13,6 @@ class Register extends Component {
         }
         this.onFormChange = this.onFormChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-
     }
 
     onFormChange(evt) {

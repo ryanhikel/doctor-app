@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
+import CommentBox from '../CommentBox';
 
 
 class SingleDoctor extends Component {
@@ -65,6 +66,7 @@ class SingleDoctor extends Component {
           <p>{this.state.doctor.uid}</p>
           <h3>Contact me:</h3>
           <p>{formatPhoneNumber(phones[0].number)}</p>
+          <CommentBox />
         </div>
       )
     }
