@@ -16,6 +16,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.get('/favorite', (request, response) => {
+  const userId = request.session.user_id
+  response.json(request.session)
+})
+
+
 app.get('/user/:id.json', (request, response) => {
   const id = request.params.id
   Users.find(id)
@@ -64,6 +70,7 @@ app.post('/login', (request, response) => {
     });
 
 });
+
 
 
 // Set the port based on the environment variable (PORT=8080 node server.js)

@@ -10,8 +10,10 @@ class SingleDoctor extends Component {
     const city = this.props.location.state.doctor.practices[0].visit_address.city;
     const state = this.props.location.state.doctor.practices[0].visit_address.state;
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
+    console.log(this.props);
+    
     return (
-      <div className="control">
+      <div className="control Single">
         <h1 className="title">
             {this.props.location.state.doctor.profile.last_name + ', ' + this.props.location.state.doctor.profile.first_name + ' ' + this.props.location.state.doctor.profile.title}
         </h1>

@@ -14,12 +14,12 @@ Favorites.find = id => {
 Favorites.create = (newFavorite) => {
   return db.one(`INSERT INTO favorites
   ( 
-    favorite_id, 
-    doctor_pic
+    doctor_uid, 
+    user_id
   ) 
   VALUES (
-    $<favorite_id>, 
-    $<doctor_pic>
+    $<doctor_uid>, 
+    $<user_id>
   ) 
     RETURNING *`, newFavorite)
 }

@@ -38,7 +38,11 @@ class App extends Component {
           <div className='App'>
             <nav className="navigation">
               <Link to='/'>Home</Link>
-              <Link to="/doctors">List of All Doctors</Link>
+              <Link to={{ 
+                pathname: "/doctors", 
+                params: {
+                  userId: this.state.userId
+                }}}>List of All Doctors</Link>
               <Link to={`/user/${this.state.userId}`}>Me</Link>
             </nav>
             <Route path='/' exact component={LandingLogin} />

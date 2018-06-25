@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
 
 
@@ -18,6 +18,8 @@ class Show extends Component {
     const city = this.props.doctor.practices[0].visit_address.city;
     const state = this.props.doctor.practices[0].visit_address.state;
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
+    console.log(this.props);
+    
     return (
       <div className="control Show">
           <div>
