@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
-
 
 class Show extends Component {
   constructor(props) {
@@ -21,11 +20,7 @@ class Show extends Component {
     return (
       <div className="control Show">
           <div>
-            <Link to={{
-              pathname: `/doctor/${this.props.doctor.uid}`,
-              state: {
-                doctor: this.props.doctor
-              }}}>
+            <Link to={`/doctor/${this.props.doctor.uid}`}>
               <h1 className="title">
                 {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
               </h1>
