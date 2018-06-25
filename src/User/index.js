@@ -12,7 +12,8 @@ class User extends Component {
       name: '',
       image: '',
       bio: '',
-      amount_children: 0
+      amount_children: 0,
+      comments: ''
     }
 
   }
@@ -27,7 +28,7 @@ class User extends Component {
           name: json.username,
           image: json.profile_pic,
           bio: json.bio,
-          amount_children: json.amount_children
+          amount_children: json.amount_children,
         })
       })
     fetch(`/favorites/${id}`, {
@@ -42,6 +43,14 @@ class User extends Component {
           fav_docs: favs
         })
       )
+    fetch(`/comments/${id}/.json`)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          comments: json.map(x => x.message_desc)
+        })
+
+      })
   }
 
   render() {
@@ -49,6 +58,8 @@ class User extends Component {
 
 
     if (this.state.fav_docs === undefined) {
+      return <div></div>
+    } else if (this.state.comments === '') {
       return <div></div>
     } else {
       console.log(fav_docs);
@@ -61,6 +72,11 @@ class User extends Component {
           <div className="user-info">
             <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
             <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+          </div>
+          <div className="Comments">
+            {this.state.comments.map(comment => {
+              return <div className='comment'>{comment}</div>
+            })}
           </div>
           <div>
             <h3>Favorite Doctors</h3>
