@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import "./style.css";
 import CommentBox from '../CommentBox';
 
+// conversion from https://stackoverflow.com/questions/8358084/regular-expression-to-reformat-a-us-phone-number-in-javascript
+
+const formatPhoneNumber = (s) => {
+  var s2 = ("" + s).replace(/\D/g, '');
+  var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+  return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+}
 
 class SingleDoctor extends Component {
   constructor(props) {
@@ -25,12 +32,8 @@ class SingleDoctor extends Component {
       return <div></div>
     } else {
       let phones = this.state.doctor.practices[0].phones.filter(x => { return x.type === 'landline' });
-      // conversion from https://stackoverflow.com/questions/8358084/regular-expression-to-reformat-a-us-phone-number-in-javascript
-      const formatPhoneNumber = (s) => {
-        var s2 = ("" + s).replace(/\D/g, '');
-        var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
-        return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
-      }
+      
+      
       const license = this.state.doctor.licenses.filter(x => x.number !== undefined && x.state !== undefined);
       const street = this.state.doctor.practices[0].visit_address.street;
       const zip = this.state.doctor.practices[0].visit_address.zip;
@@ -74,4 +77,4 @@ class SingleDoctor extends Component {
   }
 }
 
-export default SingleDoctor;
+export { SingleDoctor as default, formatPhoneNumber };
