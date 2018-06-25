@@ -35,12 +35,15 @@ class Show extends Component {
     const city = this.props.doctor.practices[0].visit_address.city;
     const state = this.props.doctor.practices[0].visit_address.state;
     const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
-    console.log(this.props);
-    
     return (
       <div className="control Show">
         <div>
-          <Link to={`/doctor/${this.props.doctor.uid}`}>
+          <Link to={{
+            pathname: `/doctor/${ this.props.doctor.uid}`,
+            state: {
+              userId: this.props.userId
+            }
+          }}>
             <h1 className="title">
               {this.props.doctor.profile.last_name + ', ' + this.props.doctor.profile.first_name + ' ' + this.props.doctor.profile.title}
             </h1>

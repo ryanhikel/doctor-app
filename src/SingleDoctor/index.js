@@ -27,8 +27,7 @@ class SingleDoctor extends Component {
         });
       });
   }
-  render() {
-
+  render() {   
     if (this.state.doctor === undefined) {
       return <div></div>
     } else {
@@ -43,7 +42,7 @@ class SingleDoctor extends Component {
       const address = `${street + ' ' + city + ", " + state + ' ' + zip}`;
 
       return (
-        <div className="control">
+        <div className="control Single">
           <h1 className="title">
             {this.state.doctor.profile.last_name + ', ' + this.state.doctor.profile.first_name + ' ' + this.state.doctor.profile.title}
           </h1>
@@ -69,7 +68,9 @@ class SingleDoctor extends Component {
           <p>{this.state.doctor.uid}</p>
           <h3>Contact me:</h3>
           <p>{formatPhoneNumber(phones[0].number)}</p>
-          <CommentBox />
+          <CommentBox
+          userId={this.props.location.state.userId}
+          doctorUid={this.state.doctor.uid} />
         </div>
       )
     }

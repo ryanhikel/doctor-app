@@ -5,19 +5,35 @@ class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comments: []
+      comments: ''
     }
   }
   componentDidMount() {
-  
-  }
-  render() {
-    return (
-      <div className='Comment'>
+    const doc_id = this.props.doctorUid
+    fetch(`/comments/${doc_id}`)
+      .then(response =>
+        response.json())
+      .then(json => {
 
-      </div>
-    )
+        this.setState({
+          comments: json.map(x => x.message_desc)
+        })
+
+      })
+  }
+
+  render() {
+    if (this.state.comments === '') {
+      return <div className='Comment'></div>
+    } else {
+      return (
+        <div className='Comments'>
+          {this.state.comments.map(comment => {
+            return <div className='comment'>{comment}</div>
+          })}
+        </div>
+      )
+    }
   }
 }
-
 export default Comment;

@@ -6,6 +6,7 @@ const saltRounds = 10;
 const path = require('path');
 const Users = require('./models/Users');
 const Favorites = require('./models/Favorites');
+const Comments = require('./models/Comments')
 // Create a new Express application (web server)
 const app = express();
 
@@ -24,6 +25,24 @@ app.get('/user/:id.json', (request, response) => {
       response.json(userData)
     });
 });
+
+app.get('/comments/:doc_id', (request, response) => {
+  const doc_id = request.params.doc_id
+  Comments.findDoctor(doc_id)
+  .then(doc => {
+    console.log(doc);
+    response.json(doc)
+  })
+})
+
+app.get('/comments/:user_id/.json', (request, response) => {
+  const user_id = request.params.user_id
+  Comments.findUser(user_id)
+    .then(user => {
+      console.log(user);
+      response.json(user)
+    })
+})
 
 app.post('/register', (request, response) => {
   const newUser = request.body;
@@ -69,6 +88,12 @@ app.post('/favorite', (request, response) => {
   const newFavorite = request.body
   Favorites.create(newFavorite)
   .then(favorite => response.json(favorite))
+})
+
+app.post('/comments', (request, response) => {
+  const newComment = request.body
+  Comments.create(newComment)
+  .then(comment => response.json(comment))
 })
 
 

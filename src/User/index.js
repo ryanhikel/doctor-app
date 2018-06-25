@@ -11,7 +11,8 @@ class User extends Component {
       name: '',
       image: '',
       bio: '',
-      amount_children: 0
+      amount_children: 0,
+      comments: ''
     }
 
   }
@@ -26,23 +27,40 @@ class User extends Component {
           name: json.username,
           image: json.profile_pic,
           bio: json.bio,
-          amount_children: json.amount_children
+          amount_children: json.amount_children,
         })
+      })
+    fetch(`/comments/${id}/.json`)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          comments: json.map(x => x.message_desc)
+        })
+        
       })
   }
 
   render() {
-    return (
-      <div className="user">
-        <div className="image-wrapper">
-          <img src={this.state.image} alt="Nothing" />
+    if (this.state.comments === '') {
+      return <div className='user'></div>
+    } else {
+      console.log(this.state.comments);
+      
+      return (
+        <div className="user">
+          <div className="image-wrapper">
+            <img src={this.state.image} alt="Nothing" />
+          </div>
+          <div className="user-info">
+            <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
+            <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+          </div>
+          <div className="Comments">{this.state.comments.map(comment => {
+            return <div className='comment'>{comment}</div>
+          })}</div>
         </div>
-        <div className="user-info">
-          <div class='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
-          <div class='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
