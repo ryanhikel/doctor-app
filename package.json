@@ -7,9 +7,11 @@
     "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
+    "enzyme": "^3.3.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-sessions": "^1.0.6",
+    "fetch": "^1.1.0",
     "node-fetch": "^2.1.2",
     "nodemon": "^1.17.5",
     "npm": "^6.1.0",
@@ -24,7 +26,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jest": "^23.1.0"
   }
 }
