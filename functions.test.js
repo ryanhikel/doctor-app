@@ -1,4 +1,4 @@
-const functions = require('./functions');
+// const functions = require('./functions');
 // const fetch = require('fetch');
 // import React from 'react';
 // import App from '/App';
@@ -64,10 +64,10 @@ const functions = require('./functions');
 //   });
 // });
 
-test('display license by state', () => {
-  expect(state).toContainObject({ type: 'num1' })
-  expect(state).toContainObject({ type: 'num2' })
-  expect(state).toContainObject({ data: 'num3' })
- })
+// test('display license by state', () => {
+//   expect(state).toContainObject({ type: 'num1' })
+//   expect(state).toContainObject({ type: 'num2' })
+//   expect(state).toContainObject({ data: 'num3' })
+//  })
 
-module.exports = functions;
+// module.exports = functions;
