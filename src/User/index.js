@@ -74,7 +74,7 @@ class User extends Component {
       credentials: "same-origin"
     })
       .then(response => response.json())
-      .then(favs => {        
+      .then(favs => {
         this.setState({
           fav_docs: favs
         })
@@ -94,7 +94,7 @@ class User extends Component {
 
     if (this.state.updated === true) {
       return <Redirect to={`/`} />;
-    }else if (this.state.fav_docs === undefined || this.state.comments === '') {
+    } else if (this.state.fav_docs === undefined || this.state.comments === '') {
       return <div className='user'></div>
     } else {
       return (
@@ -106,37 +106,39 @@ class User extends Component {
             <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
             <div className='amount-children'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
           </div>
-          <div>
-            <h3>Your Favorite Doctors</h3>
-            <ul>
-          {fav_docs.map((doc, index) => {
-            console.log(doc);
-            
-            return (
-              <Link key={index} to={{
-                pathname: `/doctor/${doc.doctor_uid}`,
-                state: {
-                  userId: window.location.href.split("/").pop()
-                }
-              }}>
-                <h5 key={index} className="subheading">{doc.doctor_last_name + ', ' + doc.doctor_first_name}</h5>
-              </Link>
-            )
-          })}
-            </ul>
-          </div>
-          <div className='all-comments'>
-          <h2 className="subheading">Your Comments</h2>
-          <div className="user-comments">{this.state.comments.map((comment, index) => {
-            return (
-              <div key={index} className='comment'><div className="each-comment">{comment}</div>
-                {/* <form className="comment-form" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+          <div className="container">
+            <div className="fav-doctors">
+              <h2 className="subheading">Your Favorite Doctors</h2>
+              <ul>
+                {fav_docs.map((doc, index) => {
+                  console.log(doc);
+
+                  return (
+                    <Link key={index} to={{
+                      pathname: `/doctor/${doc.doctor_uid}`,
+                      state: {
+                        userId: window.location.href.split("/").pop()
+                      }
+                    }}>
+                      <h5 key={index} className="subheading">{doc.doctor_last_name + ', ' + doc.doctor_first_name}</h5>
+                    </Link>
+                  )
+                })}
+              </ul>
+            </div>
+            <div className='all-comments'>
+              <h2 className="subheading">Your Comments</h2>
+              <div className="user-comments">{this.state.comments.map((comment, index) => {
+                return (
+                  <div key={index} className='comment'><div className="each-comment">{comment}</div>
+                    {/* <form className="comment-form" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
                   <textarea className='input' name="comment" value={comment}></textarea>
                   <input className='button' type="submit" value="submit" />
                 </form> */}
-              </div>
-            )
-          })}</div>
+                  </div>
+                )
+              })}</div>
+            </div>
           </div>
           <form className="update-user" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
             <input type="text" name="username" placeholder="Enter Building Name" value={this.state.name} />
