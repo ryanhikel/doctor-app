@@ -1,6 +1,6 @@
-DROP DATABASE doc_app;
-CREATE DATABASE doc_app;
-\c doc_app;
+-- DROP DATABASE doc_app;
+-- CREATE DATABASE doc_app;
+-- \c doc_app;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS favorites;
 CREATE TABLE users

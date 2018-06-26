@@ -17,6 +17,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use("/static", express.static("./build/static/"));
+
 app.get('/favorites/:id', (request, response) => {
   const id = request.params.id;
   console.log(id);
