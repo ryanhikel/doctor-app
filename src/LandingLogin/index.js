@@ -5,8 +5,8 @@ class LandingLogin extends Component {
     render() {
         return (
             <div className='LandingLogin'>
-                <h1>Healthy Kids</h1>
-                <p>PLACEHOLDER TEXT</p>
+                <h1 className="title">Healthy Kids</h1>
+                <p className="subheading">We Worry About Your Kids So You Don't Have To</p>
             </div>
         )
     }
