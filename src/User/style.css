@@ -23,23 +23,57 @@
   padding-right: 10px;
 }
 
-.all-comments{
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr, 2fr));
+  grid-template-areas: 
+  "f f c c"
+}
+
+.fav-doctors {
+  grid-area: f;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 1rem;
 }
-.all-comments h2 {
+
+.fav-doctors h2 {
   display: inline-block;
   text-align: center;
   width: 20rem;
   padding: .5rem;
 }
 
+.fav-doctors ul {
+  display: inline-block;
+  text-align: center;
+  width: 20rem;
+}
+
+.fav-doctors h5 {
+  padding-bottom: .5rem;
+}
+
+.all-comments{
+  grid-area: c;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.all-comments h2 {
+  display: inline-block;
+  text-align: center;
+  width: 30rem;
+  padding: .5rem;
+}
+
 .user-comments {
   display: inline-block;
   text-align: left;
-  width: 20rem;
+  width: 30rem;
 }
 
 .each-comment {
