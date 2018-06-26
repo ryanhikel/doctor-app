@@ -16,14 +16,14 @@ Favorites.create = (newFavorite) => {
   ( 
     doctor_uid, 
     user_id,
-    doctot_first_name,
+    doctor_first_name,
     doctor_last_name
   ) 
   VALUES (
     $<doctor_uid>, 
     $<user_id>,
-    $<first_name>,
-    $<last_name>
+    $<doctor_first_name>,
+    $<doctor_last_name>
   ) 
     RETURNING *`, newFavorite)
 }
