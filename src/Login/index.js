@@ -33,8 +33,10 @@ class Login extends Component {
             .then(response => response.json())
             .then(jsonResp => {
                 if (jsonResp.loggedIn === true) {
+                    return(
                     this.props.onUserLoggedIn(jsonResp.user),
-                    <Redirect to={`/user/${jsonResp.user.user_id}`} />
+                    <Redirect to={`/`} />
+                    )
                 } else {
                     console.log("PW DIDN'T MATCH")
                 }

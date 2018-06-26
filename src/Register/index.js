@@ -46,8 +46,10 @@ class Register extends Component {
         })
             .then(response => response.json())
             .then(jsonResp => {
+                return(
                 this.props.onUserLoggedIn(jsonResp),
-                <Redirect to={`/user/${jsonResp.user_id}`} />
+                <Redirect to={`/`} />
+                )
             })
     }
 
