@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import "./style.css";
 
 
@@ -12,9 +13,43 @@ class User extends Component {
       image: '',
       bio: '',
       amount_children: 0,
-      comments: ''
+      comments: '',
+      updated: false
+    }
+    this.onFormChange = this.onFormChange.bind(this)
+    this.onFormSubmit = this.onFormSubmit.bind(this)
+  }
+  onFormChange(evt) {
+    const element = evt.target;
+    const name = element.name;
+    const value = element.value;
+    const newState = {};
+    newState[name] = value;
+    this.setState(newState);
+  }
+
+  onFormSubmit(evt) {
+    evt.preventDefault();
+    const updateUser = {
+      id: this.state.userId,
+      username: this.state.name,
+      profile_pic: this.state.image,
+      bio: this.state.bio,
+      amount_children: this.state.amount_children,
     }
 
+    fetch(`/user/${this.state.userId}.json`, {
+      method: "PUT",
+      body: JSON.stringify(updateUser),
+      headers: {
+        "Content-type": "application/json"
+      }
+    }).then(response => response.json())
+      .then(comment => {
+        this.setState({
+          updated: true
+        });
+      });
   }
 
   componentDidMount() {
@@ -36,16 +71,17 @@ class User extends Component {
         this.setState({
           comments: json.map(x => x.message_desc)
         })
-        
+
       })
   }
 
   render() {
+    if (this.state.updated === true) {
+      return <Redirect to={`/`} />;
+    }
     if (this.state.comments === '') {
       return <div className='user'></div>
     } else {
-      console.log(this.state.comments);
-      
       return (
         <div className="user">
           <div className="image-wrapper">
@@ -55,9 +91,28 @@ class User extends Component {
             <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
             <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
           </div>
-          <div className="Comments">{this.state.comments.map(comment => {
-            return <div className='comment'>{comment}</div>
+          <div className='all-comments'>
+          <div className="left">
+          <h2 className="subheading">Your Comments</h2>
+          <div className="user-comments">{this.state.comments.map(comment => {
+            return (
+              <div className='comment'><div className="each-comment">{comment}</div>
+                {/* <form className="comment-form" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+                  <textarea className='input' name="comment" value={comment}></textarea>
+                  <input className='button' type="submit" value="submit" />
+                </form> */}
+              </div>
+            )
           })}</div>
+          </div>
+          </div>
+          <form className="update-user" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
+            <input type="text" name="username" placeholder="Enter Building Name" value={this.state.name} />
+            <input type="text" name="profile_pic" placeholder="Enter Year of Construction" value={this.state.image} />
+            <input type="text" name="bio" placeholder="Enter Building City" value={this.state.bio} />
+            <input type="text" name="amount_children" placeholder="Enter Building Architect" value={this.state.amount_children} />
+            <input type="submit" value="Update Profile" />
+          </form>
         </div>
       )
     }

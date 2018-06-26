@@ -32,7 +32,9 @@ Users.create = (newUser) => {
 Users.update = (userInfo) => {
   return db.none(`UPDATE users 
   SET username = $<username>, 
-  profile_pic = $<profile_pic> 
+  profile_pic = $<profile_pic>,
+  bio = $<bio>, 
+  amount_children = $<amount_children>
   WHERE user_id = $<id>`, userInfo)
 }
 

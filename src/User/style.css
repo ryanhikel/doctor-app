@@ -8,13 +8,33 @@
   max-height: 500px;
 }
 
+.user h2 {
+  font-size: 1.5rem;
+}
+
 .user-info{
   display: inline-block;
   text-align: left;
   padding: 1rem;
 }
 
-.user-info .subheading {
+.user .subheading {
   font-weight: bold;
   padding-right: 10px;
+}
+
+.all-comments{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.left {
+  text-align: left;
+}
+
+.user-comments {
+  display: inline-block;
+  text-align: left;
+  margin-left: 5rem;
 }
