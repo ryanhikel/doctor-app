@@ -131,10 +131,6 @@ class User extends Component {
               <div className="user-comments">{this.state.comments.map((comment, index) => {
                 return (
                   <div key={index} className='comment'><div className="each-comment">{comment}</div>
-                    {/* <form className="comment-form" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
-                  <textarea className='input' name="comment" value={comment}></textarea>
-                  <input className='button' type="submit" value="submit" />
-                </form> */}
                   </div>
                 )
               })}</div>
