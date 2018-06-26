@@ -29,9 +29,19 @@
   align-items: flex-end;
   padding: 1rem;
 }
+.all-comments h2 {
+  display: inline-block;
+  text-align: center;
+  width: 20rem;
+  padding: .5rem;
+}
 
 .user-comments {
   display: inline-block;
   text-align: left;
-  width: 10rem;
+  width: 20rem;
+}
+
+.each-comment {
+  padding-bottom: 1rem;
 }
