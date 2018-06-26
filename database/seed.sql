@@ -1,4 +1,4 @@
-\c doc_app
+-- \c doc_app
 INSERT INTO users
   (username, password_digest, profile_pic)
 VALUES
