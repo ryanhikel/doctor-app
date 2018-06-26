@@ -17,11 +17,22 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.get('/favorites/:id', (request, response) => {
+  const id = request.params.id;
+  console.log(id);
+  
+  Favorites.find(id)
+    .then(favorite => {
+      console.log(favorite);
+      
+      response.json(favorite)
+    })
+})
+
 app.get('/user/:id.json', (request, response) => {
-  const id = request.params.id
+  const id = Number(request.params.id);
   Users.find(id)
     .then(userData => {
-      console.log(userData);
       response.json(userData)
     });
 });
@@ -29,25 +40,21 @@ app.get('/user/:id.json', (request, response) => {
 app.get('/comments/:doc_id', (request, response) => {
   const doc_id = request.params.doc_id
   Comments.findDoctor(doc_id)
-    .then(doc => {
-      console.log(doc);
-      response.json(doc)
-    })
+  .then(doc => {
+    response.json(doc)
+  })
 })
 
 app.get('/comments/:user_id/.json', (request, response) => {
   const user_id = request.params.user_id
   Comments.findUser(user_id)
     .then(user => {
-      console.log(user);
       response.json(user)
     })
 })
 
 app.post('/register', (request, response) => {
   const newUser = request.body;
-  console.log(request.body);
-
   bcrypt.hash(newUser.password_digest, saltRounds, function (err, hash) {
     newUser.password_digest = hash;
     Users.create(newUser)
@@ -85,7 +92,7 @@ app.post('/login', (request, response) => {
 });
 
 app.post('/favorite', (request, response) => {
-  const newFavorite = request.body
+  const newFavorite = request.body;
   Favorites.create(newFavorite)
     .then(favorite => response.json(favorite))
 })
@@ -111,6 +118,7 @@ app.put('/user/:id.json', (request, response) => {
     })
   })
 })
+
 
 // Set the port based on the environment variable (PORT=8080 node server.js)
 // and fallback to 4567
