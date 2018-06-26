@@ -16,3 +16,14 @@ it('button componet', () => {
 //   expect(wrapper.find('div').exists()).toEqual(false);
 // })
 
+// it('renders button with class', () => {
+//   const wrapper = shallow(<Button buttonClass="testClass" onclick="2344555" />);
+//   expect(wrapper.hasClass("testClass")).toEqual(false);
+// })
+
+it('renders button with click handler attached', () => {
+  let testPass = false;
+  const clickHandler = () => {
+    testPass = true;
+  }
+})
