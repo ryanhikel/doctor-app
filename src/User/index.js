@@ -92,7 +92,6 @@ class User extends Component {
             <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
           </div>
           <div className='all-comments'>
-          <div className="left">
           <h2 className="subheading">Your Comments</h2>
           <div className="user-comments">{this.state.comments.map(comment => {
             return (
@@ -104,7 +103,6 @@ class User extends Component {
               </div>
             )
           })}</div>
-          </div>
           </div>
           <form className="update-user" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
             <input type="text" name="username" placeholder="Enter Building Name" value={this.state.name} />
