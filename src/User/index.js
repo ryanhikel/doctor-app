@@ -110,6 +110,8 @@ class User extends Component {
             <h3>Your Favorite Doctors</h3>
             <ul>
           {fav_docs.map((doc, index) => {
+            console.log(doc);
+            
             return (
               <Link key={index} to={{
                 pathname: `/doctor/${doc.doctor_uid}`,
@@ -117,7 +119,7 @@ class User extends Component {
                   userId: window.location.href.split("/").pop()
                 }
               }}>
-                <h1 key={index} className="title">doctor</h1>
+                <h5 key={index} className="subheading">{doc.doctor_last_name + ', ' + doc.doctor_first_name}</h5>
               </Link>
             )
           })}
