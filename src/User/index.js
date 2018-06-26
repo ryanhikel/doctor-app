@@ -65,6 +65,20 @@ class User extends Component {
           amount_children: json.amount_children,
         })
       })
+
+    fetch(`/favorites/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "same-origin"
+    })
+      .then(response => response.json())
+      .then(favs => {        
+        this.setState({
+          fav_docs: favs
+        })
+      })
     fetch(`/comments/${id}/.json`)
       .then(response => response.json())
       .then(json => {
@@ -76,10 +90,11 @@ class User extends Component {
   }
 
   render() {
+    const fav_docs = this.state.fav_docs;
+
     if (this.state.updated === true) {
       return <Redirect to={`/`} />;
-    }
-    if (this.state.comments === '') {
+    }else if (this.state.fav_docs === undefined || this.state.comments === '') {
       return <div className='user'></div>
     } else {
       return (
@@ -89,13 +104,30 @@ class User extends Component {
           </div>
           <div className="user-info">
             <div className='bio'><span className="subheading">Bio:</span><span>{this.state.bio}</span></div>
-            <div className='amount-chilren'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+            <div className='amount-children'><span className="subheading">Number of Children:</span><span>{this.state.amount_children}</span></div>
+          </div>
+          <div>
+            <h3>Your Favorite Doctors</h3>
+            <ul>
+          {fav_docs.map((doc, index) => {
+            return (
+              <Link key={index} to={{
+                pathname: `/doctor/${doc.doctor_uid}`,
+                state: {
+                  userId: window.location.href.split("/").pop()
+                }
+              }}>
+                <h1 key={index} className="title">doctor</h1>
+              </Link>
+            )
+          })}
+            </ul>
           </div>
           <div className='all-comments'>
           <h2 className="subheading">Your Comments</h2>
-          <div className="user-comments">{this.state.comments.map(comment => {
+          <div className="user-comments">{this.state.comments.map((comment, index) => {
             return (
-              <div className='comment'><div className="each-comment">{comment}</div>
+              <div key={index} className='comment'><div className="each-comment">{comment}</div>
                 {/* <form className="comment-form" onChange={this.onFormChange} onSubmit={this.onFormSubmit}>
                   <textarea className='input' name="comment" value={comment}></textarea>
                   <input className='button' type="submit" value="submit" />

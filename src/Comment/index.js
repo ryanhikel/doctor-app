@@ -28,8 +28,8 @@ class Comment extends Component {
     } else {
       return (
         <div className='Comments'>
-          {this.state.comments.map(comment => {
-            return <div className='comment'>{comment}</div>
+          {this.state.comments.map((comment, index) => {
+            return <div key={index} className='comment'>{comment}</div>
           })}
         </div>
       )

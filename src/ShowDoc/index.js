@@ -15,8 +15,14 @@ class Show extends Component {
     evt.preventDefault();
     const newFavorite = {
       doctor_uid: this.props.doctor.uid,
-      user_id: this.props.userId
+      user_id: this.props.userId,
+      doctor_last_name: this.props.doctor.profile.last_name,
+      doctor_first_name: this.props.doctor.profile.first_name,
+      doctor_title: this.props.doctor.profile.title
     }
+    console.log(newFavorite);
+    
+    
     fetch('/favorite', {
       method: 'POST',
       body: JSON.stringify(newFavorite),
