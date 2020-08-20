@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:4567",
   "dependencies": {
-    "bcrypt": "^2.0.1",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "enzyme": "^3.3.0",
